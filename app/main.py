@@ -35,6 +35,6 @@ def create_post(post: PostCreate, db: Session = Depends(get_db)):
 def get_posts(db: Session = Depends(get_db)):
     return db.query(Post).all()
 
-@app.get("/posts/author/{author_name}", response_model=list[PostResponse])
-def get_posts_by_author(author_name: str, db: Session = Depends(get_db)):
-    return db.query(Post).filter(Post.author == author_name).all()
+@app.get("/posts/title/{title}", response_model=list[PostResponse])
+def get_posts_by_title(title: str, db: Session = Depends(get_db)):
+    return db.query(Post).filter(Post.title == title).all()
